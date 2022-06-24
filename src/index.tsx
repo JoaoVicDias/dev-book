@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
+import { UseSearchProvider } from './context/useSearch'
+
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
@@ -16,7 +18,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={Theme}>
-        <App />
+        <UseSearchProvider>
+          <App />
+        </UseSearchProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>

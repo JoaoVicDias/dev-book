@@ -16,11 +16,18 @@ export const Container = styled.li`
 `;
 
 export const InformationsContainer = styled.div`
-  padding: 12px;
+  padding: 12px 16px;
   background-color: ${(props) => props.theme.colors.background.paper};
   color: ${(props) => props.theme.colors.white};
   border-radius: 0 0 4px 4px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 10px;
+
+  > h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 `;

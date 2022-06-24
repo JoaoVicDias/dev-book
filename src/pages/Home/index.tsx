@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
 import StalkPeople from './components/StalkPeople'
-import TopUser from './components/TopUsers'
+import TopUser from '../../components/Users'
 
 import { onGetPopularUsers } from '../../services/api'
 
 import { } from './styles'
 
-import { ITopSalesItem } from '../../Types/Home'
+import { ITopSalesItem } from '../../Types/components/TopSales'
 
 
 const Home: React.FC = () => {
@@ -28,7 +28,10 @@ const Home: React.FC = () => {
     return (
         <>
             <StalkPeople />
-            <TopUser items={data} />
+            <TopUser
+                items={data}
+                title="Top sales"
+            />
         </>
     )
 }

@@ -3,11 +3,11 @@ import axios from 'axios'
 
 import { Container, InformationsContainer } from './styles'
 
-import { ITopSalesItem, ITopSalesItemState } from '../../../../Types/Home'
+import { ITopSalesItem, ITopSalesItemState } from '../../Types/components/TopSales'
 import { Link } from 'react-router-dom'
 
 
-const TopUserItem: React.FC<ITopSalesItem> = ({ avatar_url, login, url }) => {
+const TopUserItem: React.FC<ITopSalesItem> = ({ avatar_url, login, url, className }) => {
 
     const [userData, setUserData] = useState<ITopSalesItemState>({ name: '' })
 
@@ -23,12 +23,12 @@ const TopUserItem: React.FC<ITopSalesItem> = ({ avatar_url, login, url }) => {
     useEffect(() => { onFetchUserDataHandler() }, [onFetchUserDataHandler])
 
     return (
-        <Container>
+        <Container className={className}>
             <Link to={`/${login}`}>
                 <img src={avatar_url} alt={login} />
                 <InformationsContainer>
                     <h3>{userData.name}</h3>
-                    <h3>@{login}</h3>
+                    <p>@{login}</p>
                 </InformationsContainer>
             </Link>
         </Container>

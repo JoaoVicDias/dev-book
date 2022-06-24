@@ -13,7 +13,11 @@ const StalkPeople: React.FC = () => {
         <Container>
             <LeftPartContainer>
                 <Text> Stalk people on github! </Text>
-                <InputSearch className='form_input_search-stalk'>
+                <InputSearch
+                    className='form_input_search-stalk'
+                    onChangeSearchTextHandler={() => null}
+                    onFetchDataHandler={() => null}
+                >
                     <VscSearch />
                 </InputSearch>
             </LeftPartContainer>
