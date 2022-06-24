@@ -7,7 +7,9 @@ import Octocat from '../../../../assets/octocat.png'
 
 import { Container, LeftPartContainer, Text } from './styles'
 
-const StalkPeople: React.FC = () => {
+import { IStalkPeople } from '../../../../Types/Home'
+
+const StalkPeople: React.FC<IStalkPeople> = ({ onChangeSearchTextHandler, onFetchDataHandler }) => {
 
     return (
         <Container>
@@ -15,8 +17,8 @@ const StalkPeople: React.FC = () => {
                 <Text> Stalk people on github! </Text>
                 <InputSearch
                     className='form_input_search-stalk'
-                    onChangeSearchTextHandler={() => null}
-                    onFetchDataHandler={() => null}
+                    onChangeSearchTextHandler={onChangeSearchTextHandler}
+                    onFetchDataHandler={onFetchDataHandler}
                 >
                     <VscSearch />
                 </InputSearch>
