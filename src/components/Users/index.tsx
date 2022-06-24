@@ -4,10 +4,10 @@ import TopUserList from '../UsersList'
 
 import { Container, Title } from './styles'
 
-import { ITopSales } from '../../Types/components/TopSales'
+import { IUsers } from '../../Types/components/Users'
 
 
-const TopUser: React.FC<ITopSales> = ({
+const TopUser: React.FC<IUsers> = ({
     items,
     className,
     title,

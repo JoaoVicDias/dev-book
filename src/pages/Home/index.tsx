@@ -7,12 +7,12 @@ import { onGetPopularUsers } from '../../services/api'
 
 import { } from './styles'
 
-import { ITopSalesItem } from '../../Types/components/TopSales'
+import { IUsersItem } from '../../Types/components/Users'
 
 
 const Home: React.FC = () => {
 
-    const [data, setData] = useState<ITopSalesItem[]>([])
+    const [data, setData] = useState<IUsersItem[]>([])
 
     const onFetchDataHandler = useCallback(async () => {
         try {

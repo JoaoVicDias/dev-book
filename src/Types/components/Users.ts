@@ -1,20 +1,20 @@
-export interface ITopSalesItem {
+export interface IUsersItem {
     login: string;
     url: string;
     avatar_url: string;
     className?: string;
 }
 
-export interface ITopSalesList {
-    items: ITopSalesItem[];
+export interface IUsersList {
+    items: IUsersItem[];
     className?: string;
     classNameItem?: string;
     rows?: number;
     itemsPerRow?: number;
 }
 
-export interface ITopSales {
-    items: ITopSalesItem[];
+export interface IUsers {
+    items: IUsersItem[];
     className?: string;
     classNameList?: string;
     classNameItem?: string;
@@ -23,6 +23,6 @@ export interface ITopSales {
     itemsPerRow?: number;
 }
 
-export interface ITopSalesItemState {
+export interface IUsersItemState {
     name: string;
 }

@@ -9,7 +9,7 @@ import useSearch from '../../context/useSearch'
 
 import { Container } from './styles'
 
-import { ITopSalesItem } from '../../Types/components/TopSales'
+import { IUsersItem } from '../../Types/components/Users'
 import { onGetUserByName } from '../../services/api'
 
 const Layout: React.FC = () => {
@@ -18,7 +18,7 @@ const Layout: React.FC = () => {
 
     const shouldSearch = page.global && searchText.global.isValid;
 
-    const [data, setData] = useState<ITopSalesItem[]>([])
+    const [data, setData] = useState<IUsersItem[]>([])
     const [searchedText, setSearchedText] = useState('')
 
     const onFetchDataHandler = useCallback(async (event: React.FormEvent<HTMLFormElement>) => {

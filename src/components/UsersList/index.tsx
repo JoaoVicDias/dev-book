@@ -6,9 +6,9 @@ import TopUserItem from '../UserItem'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { ITopSalesList } from '../../Types/components/TopSales'
+import { IUsersList } from '../../Types/components/Users'
 
-const TopUserList: React.FC<ITopSalesList> = ({ items, className, classNameItem, itemsPerRow, rows }) => {
+const TopUserList: React.FC<IUsersList> = ({ items, className, classNameItem, itemsPerRow, rows }) => {
 
     const settings = {
         dots: false,

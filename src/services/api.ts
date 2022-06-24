@@ -2,9 +2,6 @@ import axios from "axios";
 
 export const githubApi = axios.create({
   baseURL: "https://api.github.com",
-  headers: {
-    Authorization: `token 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`
-  }
 });
 
 export const onGetPopularUsers = () => {

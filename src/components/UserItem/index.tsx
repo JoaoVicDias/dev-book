@@ -3,13 +3,13 @@ import axios from 'axios'
 
 import { Container, InformationsContainer } from './styles'
 
-import { ITopSalesItem, ITopSalesItemState } from '../../Types/components/TopSales'
+import { IUsersItem, IUsersItemState } from '../../Types/components/Users'
 import { Link } from 'react-router-dom'
 
 
-const TopUserItem: React.FC<ITopSalesItem> = ({ avatar_url, login, url, className }) => {
+const TopUserItem: React.FC<IUsersItem> = ({ avatar_url, login, url, className }) => {
 
-    const [userData, setUserData] = useState<ITopSalesItemState>({ name: '' })
+    const [userData, setUserData] = useState<IUsersItemState>({ name: '' })
 
     const onFetchUserDataHandler = useCallback(async () => {
         try {
