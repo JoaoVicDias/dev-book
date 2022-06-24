@@ -1,11 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
 import StalkPeople from './components/StalkPeople'
-import TopUser from '../../components/Users'
+import Users from '../../components/Users'
 
 import { onGetPopularUsers, onGetUserByName } from '../../services/api'
-
-import { } from './styles'
 
 import { IUsersItem } from '../../Types/components/Users'
 import useSearch from '../../context/useSearch'
@@ -19,14 +17,17 @@ const Home: React.FC = () => {
 
     const [data, setData] = useState<IUsersItem[]>([])
     const [searchedtext, setSearchedText] = useState('')
+    const [loading, setLoading] = useState(true)
 
     const onFetchDataHandler = useCallback(async () => {
+        setLoading(true)
         try {
             const res = await onGetPopularUsers()
             setData(res.data.items)
         } catch (err) {
             console.log(err)
         }
+        setLoading(false)
     }, [])
 
     const onSearchDataHandler = useCallback(async (event: React.FormEvent<HTMLFormElement>) => {
@@ -36,6 +37,7 @@ const Home: React.FC = () => {
         onClearSearchHandler('global')
         onSetPage('home', true)
         setSearchedText(searchText.home.value)
+        setLoading(true)
 
         try {
             const res = await onGetUserByName(searchText.home.value)
@@ -43,6 +45,8 @@ const Home: React.FC = () => {
         } catch (err) {
 
         }
+
+        setLoading(false)
     }, [onClearSearchHandler, onSetPage, searchText.home.isValid, searchText.home.value])
 
     useEffect(() => { onFetchDataHandler() }, [onFetchDataHandler])
@@ -61,9 +65,10 @@ const Home: React.FC = () => {
                 onChangeSearchTextHandler={(event) => onChangeSearchTextHandler(event, 'home')}
                 onFetchDataHandler={onSearchDataHandler}
             />
-            <TopUser
+            <Users
                 items={data}
                 title={searchedtext || 'Top users'}
+                loading={loading}
             />
         </>
     )

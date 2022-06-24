@@ -6,9 +6,11 @@ import TopUserItem from '../UserItem'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { FeedbackText } from './styles'
+
 import { IUsersList } from '../../Types/components/Users'
 
-const TopUserList: React.FC<IUsersList> = ({ items, className, classNameItem, itemsPerRow, rows }) => {
+const TopUserList: React.FC<IUsersList> = ({ items, className, classNameItem, itemsPerRow, rows, loading }) => {
 
     const settings = {
         dots: false,
@@ -21,8 +23,25 @@ const TopUserList: React.FC<IUsersList> = ({ items, className, classNameItem, it
         adaptiveHeight: true
     }
 
+    if (loading) {
+        return (
+            <FeedbackText>
+                Loading...
+            </FeedbackText>
+        )
+    }
+
+    if (!loading && items.length === 0) {
+        return (
+            <FeedbackText>
+                Nothing was found!
+            </FeedbackText>
+        )
+    }
+
     return (
-        <Slider {...settings} rtl >
+        <Slider {...settings}>
+
             {
                 items.map(item => (
                     <TopUserItem key={item.login} className={classNameItem} {...item} />

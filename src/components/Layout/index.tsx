@@ -20,15 +20,18 @@ const Layout: React.FC = () => {
 
     const [data, setData] = useState<IUsersItem[]>([])
     const [searchedText, setSearchedText] = useState('')
+    const [loading, setLoading] = useState(true)
 
     const onFetchDataHandler = useCallback(async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        if(!searchText.global.isValid) return
+        if (!searchText.global.isValid) return
 
         onClearSearchHandler('home')
         onSetPage('global', true)
         setSearchedText(searchText.global.value)
+
+        setLoading(true)
 
         try {
             const res = await onGetUserByName(searchText.global.value)
@@ -36,6 +39,7 @@ const Layout: React.FC = () => {
         } catch (err) {
             console.log(err)
         }
+        setLoading(false)
     }, [onClearSearchHandler, onSetPage, searchText.global.isValid, searchText.global.value])
 
     useEffect(() => {
@@ -62,6 +66,7 @@ const Layout: React.FC = () => {
                             classNameItem='search_results_item'
                             itemsPerRow={4}
                             rows={2}
+                            loading={loading}
                         />
                         : <Outlet />
                 }

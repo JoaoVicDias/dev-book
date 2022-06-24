@@ -14,16 +14,18 @@ const TopUser: React.FC<IUsers> = ({
     classNameItem,
     classNameList,
     itemsPerRow,
-    rows
+    rows,
+    loading
 }) => (
     <Container className={className}>
         <Title> {title} </Title>
-        <TopUserList 
-        items={items} 
-        className={classNameList} 
-        classNameItem={classNameItem} 
-        itemsPerRow={itemsPerRow}
-        rows={rows}
+        <TopUserList
+            items={items}
+            className={classNameList}
+            classNameItem={classNameItem}
+            itemsPerRow={itemsPerRow}
+            rows={rows}
+            loading={loading}
         />
     </Container>
 )

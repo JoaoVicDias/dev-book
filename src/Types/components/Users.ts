@@ -10,6 +10,7 @@ export interface IUsersList {
     className?: string;
     classNameItem?: string;
     rows?: number;
+    loading: boolean;
     itemsPerRow?: number;
 }
 
@@ -21,6 +22,7 @@ export interface IUsers {
     title: string;
     rows?: number;
     itemsPerRow?: number;
+    loading: boolean;
 }
 
 export interface IUsersItemState {
