@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import StalkPeople from './components/StalkPeople'
 import Users from '../../components/Users'
@@ -10,14 +11,15 @@ import useSearch from '../../context/useSearch'
 
 
 const Home: React.FC = () => {
-
     const { searchText, onChangeSearchTextHandler, onClearSearchHandler, onSetPage, page } = useSearch()
 
     const shouldSearch = searchText.home.isValid && page.home
 
     const [data, setData] = useState<IUsersItem[]>([])
+    const [searchedData, setSearchedData] = useState<IUsersItem[]>([])
     const [searchedtext, setSearchedText] = useState('')
     const [loading, setLoading] = useState(true)
+    const [searchWasUsed, setsearchWasUsed] = useState(false)
 
     const onFetchDataHandler = useCallback(async () => {
         setLoading(true)
@@ -25,7 +27,7 @@ const Home: React.FC = () => {
             const res = await onGetPopularUsers()
             setData(res.data.items)
         } catch (err) {
-            console.log(err)
+            toast.error('Something went wrong, please try again!')
         }
         setLoading(false)
     }, [])
@@ -38,26 +40,28 @@ const Home: React.FC = () => {
         onSetPage('home', true)
         setSearchedText(searchText.home.value)
         setLoading(true)
+        setsearchWasUsed(true)
 
         try {
             const res = await onGetUserByName(searchText.home.value)
-            setData(res.data.items)
+            setSearchedData(res.data.items)
         } catch (err) {
-
+            toast.error('Something went wrong, please try again!')
         }
 
         setLoading(false)
     }, [onClearSearchHandler, onSetPage, searchText.home.isValid, searchText.home.value])
 
-    useEffect(() => { onFetchDataHandler() }, [onFetchDataHandler])
+    useEffect(() => {
+        onFetchDataHandler()
+    }, [onFetchDataHandler])
 
     useEffect(() => {
-        if (!shouldSearch) {
-            onFetchDataHandler()
+        if (!shouldSearch && searchWasUsed) {
             onSetPage('home', false)
             setSearchedText('')
         }
-    }, [onFetchDataHandler, onSetPage, shouldSearch])
+    }, [onFetchDataHandler, onSetPage, searchWasUsed, shouldSearch])
 
     return (
         <>
@@ -66,7 +70,7 @@ const Home: React.FC = () => {
                 onFetchDataHandler={onSearchDataHandler}
             />
             <Users
-                items={data}
+                items={page.home ? searchedData : data}
                 title={searchedtext || 'Top users'}
                 loading={loading}
             />

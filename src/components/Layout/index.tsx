@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import Header from '../Header'
 import Content from '../Content'
@@ -7,10 +8,11 @@ import Users from '../Users'
 
 import useSearch from '../../context/useSearch'
 
+import { onGetUserByName } from '../../services/api'
+
 import { Container } from './styles'
 
 import { IUsersItem } from '../../Types/components/Users'
-import { onGetUserByName } from '../../services/api'
 
 const Layout: React.FC = () => {
 
@@ -21,6 +23,7 @@ const Layout: React.FC = () => {
     const [data, setData] = useState<IUsersItem[]>([])
     const [searchedText, setSearchedText] = useState('')
     const [loading, setLoading] = useState(true)
+    const [searchWasUsed, setsearchWasUsed] = useState(false)
 
     const onFetchDataHandler = useCallback(async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -30,24 +33,24 @@ const Layout: React.FC = () => {
         onClearSearchHandler('home')
         onSetPage('global', true)
         setSearchedText(searchText.global.value)
-
+        setsearchWasUsed(true)
         setLoading(true)
 
         try {
             const res = await onGetUserByName(searchText.global.value)
             setData(res.data.items)
         } catch (err) {
-            console.log(err)
+            toast.error('Something went wrong, please try again!')
         }
         setLoading(false)
     }, [onClearSearchHandler, onSetPage, searchText.global.isValid, searchText.global.value])
 
     useEffect(() => {
-        if (!shouldSearch) {
+        if (!shouldSearch && searchWasUsed) {
             setData([])
             onSetPage('global', false)
         }
-    }, [onSetPage, shouldSearch])
+    }, [onSetPage, searchWasUsed, shouldSearch])
 
     return (
         <Container>

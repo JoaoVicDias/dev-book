@@ -10,7 +10,6 @@ import { Container, LeftPartContainer, Text } from './styles'
 import { IStalkPeople } from '../../../../Types/Home'
 
 const StalkPeople: React.FC<IStalkPeople> = ({ onChangeSearchTextHandler, onFetchDataHandler }) => {
-
     return (
         <Container>
             <LeftPartContainer>
