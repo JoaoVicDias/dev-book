@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import StalkPeople from './components/StalkPeople'
 import Users from '../../components/Users'
 
-import { onGetPopularUsers, onGetUserByName } from '../../services/api'
+import { onGetPopularUsers, onGetUsersByName } from '../../services/api'
 
 import { IUsersItem } from '../../Types/components/Users'
 import useSearch from '../../context/useSearch'
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
         setsearchWasUsed(true)
 
         try {
-            const res = await onGetUserByName(searchText.home.value)
+            const res = await onGetUsersByName(searchText.home.value)
             setSearchedData(res.data.items)
         } catch (err) {
             toast.error('Something went wrong, please try again!')

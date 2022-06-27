@@ -8,7 +8,7 @@ import Users from '../Users'
 
 import useSearch from '../../context/useSearch'
 
-import { onGetUserByName } from '../../services/api'
+import { onGetUsersByName } from '../../services/api'
 
 import { Container } from './styles'
 
@@ -37,7 +37,7 @@ const Layout: React.FC = () => {
         setLoading(true)
 
         try {
-            const res = await onGetUserByName(searchText.global.value)
+            const res = await onGetUsersByName(searchText.global.value)
             setData(res.data.items)
         } catch (err) {
             toast.error('Something went wrong, please try again!')
