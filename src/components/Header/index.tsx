@@ -7,7 +7,7 @@ import { Container, Logo } from './styles'
 
 import { IHeader } from '../../Types/components/Layout'
 
-const Header: React.FC<IHeader> = ({ onChangeSearchTextHandler, onFetchDataHandler }) => (
+const Header: React.FC<IHeader> = ({ onChangeSearchTextHandler, onFetchDataHandler, inputValue }) => (
     <Container>
         <Logo>
             <Link to='/'>
@@ -20,6 +20,7 @@ const Header: React.FC<IHeader> = ({ onChangeSearchTextHandler, onFetchDataHandl
             className='form__input_search-header'
             onChangeSearchTextHandler={onChangeSearchTextHandler}
             onFetchDataHandler={onFetchDataHandler}
+            value={inputValue}
         />
 
         <div></div>

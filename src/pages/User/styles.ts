@@ -10,6 +10,7 @@ export const Container = styled.div`
 
   .ul__userinformation--card {
     grid-template-columns: 2fr 1fr;
+    align-items: center;
 
     @media (max-width: 767px) {
         grid-template-columns: none;

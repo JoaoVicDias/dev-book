@@ -15,7 +15,8 @@ const TopUser: React.FC<IUsers> = ({
     classNameList,
     itemsPerRow,
     rows,
-    loading
+    loading,
+    onClickItem
 }) => (
     <Container className={className}>
         <Title> {title} </Title>
@@ -26,6 +27,7 @@ const TopUser: React.FC<IUsers> = ({
             itemsPerRow={itemsPerRow}
             rows={rows}
             loading={loading}
+            onClickItem={onClickItem}
         />
     </Container>
 )

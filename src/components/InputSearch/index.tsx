@@ -8,7 +8,8 @@ const InputSearch: React.FC<IInputSearch> = ({
     className,
     children,
     onFetchDataHandler,
-    onChangeSearchTextHandler
+    onChangeSearchTextHandler,
+    value
 }) => {
     return (
         <Container className={className} onSubmit={(event) => onFetchDataHandler(event)}>
@@ -16,6 +17,7 @@ const InputSearch: React.FC<IInputSearch> = ({
                 type='search'
                 placeholder='Search'
                 onChange={(event) => onChangeSearchTextHandler(event)}
+                value={value}
             />
             <button>
                 {children}

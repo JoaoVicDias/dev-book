@@ -10,7 +10,15 @@ import { FeedbackText } from './styles'
 
 import { IUsersList } from '../../Types/components/Users'
 
-const TopUserList: React.FC<IUsersList> = ({ items, className, classNameItem, itemsPerRow, rows, loading }) => {
+const TopUserList: React.FC<IUsersList> = ({ 
+    items, 
+    className, 
+    classNameItem, 
+    itemsPerRow, 
+    rows, 
+    loading,
+    onClickItem
+}) => {
 
     const settings = {
         dots: false,
@@ -44,7 +52,11 @@ const TopUserList: React.FC<IUsersList> = ({ items, className, classNameItem, it
 
             {
                 items.map(item => (
-                    <TopUserItem key={item.login} className={classNameItem} {...item} />
+                    <TopUserItem 
+                    key={item.login} 
+                    className={classNameItem} 
+                    onClickItem={onClickItem}
+                    {...item} />
                 ))
             }
         </Slider>

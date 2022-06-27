@@ -9,4 +9,5 @@ export interface IHeader {
     event: React.ChangeEvent<HTMLInputElement>
   ) => void;
   onFetchDataHandler: (event: React.FormEvent<HTMLFormElement>) => void;
+  inputValue?: string;
 }

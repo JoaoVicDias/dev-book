@@ -57,6 +57,7 @@ const Layout: React.FC = () => {
             <Header
                 onFetchDataHandler={onFetchDataHandler}
                 onChangeSearchTextHandler={(event) => onChangeSearchTextHandler(event, 'global')}
+                inputValue={searchText.global.value}
             />
             <Content>
                 {
@@ -70,6 +71,7 @@ const Layout: React.FC = () => {
                             itemsPerRow={4}
                             rows={2}
                             loading={loading}
+                            onClickItem={() => onClearSearchHandler('global')}
                         />
                         : <Outlet />
                 }

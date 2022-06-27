@@ -73,6 +73,7 @@ const Home: React.FC = () => {
                 items={page.home ? searchedData : data}
                 title={searchedtext || 'Top users'}
                 loading={loading}
+                onClickItem={() => onClearSearchHandler('home')}
             />
         </>
     )

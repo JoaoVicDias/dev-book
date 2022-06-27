@@ -4,7 +4,6 @@ export const Container = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  align-items: center;
   background-color: ${(props) => props.theme.colors.background.paper};
   border-radius: 4px;
   padding: 20px;

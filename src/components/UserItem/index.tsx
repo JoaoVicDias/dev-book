@@ -7,7 +7,7 @@ import { IUsersItem, IUsersItemState } from '../../Types/components/Users'
 import { Link } from 'react-router-dom'
 
 
-const TopUserItem: React.FC<IUsersItem> = ({ avatar_url, login, url, className }) => {
+const TopUserItem: React.FC<IUsersItem> = ({ avatar_url, login, url, className, onClickItem }) => {
 
     const [userData, setUserData] = useState<IUsersItemState>({ name: '' })
 
@@ -24,7 +24,7 @@ const TopUserItem: React.FC<IUsersItem> = ({ avatar_url, login, url, className }
 
     return (
         <Container className={className}>
-            <Link to={`/${login}`}>
+            <Link to={`/${login}`} onClick={onClickItem}>
                 <img src={avatar_url} alt={login} />
                 <InformationsContainer>
                     <h3>{userData.name}</h3>
