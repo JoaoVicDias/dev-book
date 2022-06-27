@@ -23,7 +23,7 @@ const TopUserList: React.FC<IUsersList> = ({
     const settings = {
         dots: false,
         speed: 500,
-        slidesToShow: window.screen.width <= 767 ? 1 : itemsPerRow || 4,
+        slidesToShow: window.screen.width <= 1024 ? 1 : itemsPerRow || 4,
         slidesToScroll: 1,
         draggable: true,
         className: `slick_carousel ${className}`,

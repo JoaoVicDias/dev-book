@@ -30,4 +30,5 @@ export interface IUsers {
 
 export interface IUsersItemState {
   name: string;
+  bio: string;
 }

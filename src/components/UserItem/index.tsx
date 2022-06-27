@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const TopUserItem: React.FC<IUsersItem> = ({ avatar_url, login, url, className, onClickItem }) => {
 
-    const [userData, setUserData] = useState<IUsersItemState>({ name: '' })
+    const [userData, setUserData] = useState<IUsersItemState>({ name: '', bio: '' })
 
     const onFetchUserDataHandler = useCallback(async () => {
         try {
@@ -29,6 +29,7 @@ const TopUserItem: React.FC<IUsersItem> = ({ avatar_url, login, url, className, 
                 <InformationsContainer>
                     <h3>{userData.name}</h3>
                     <p>@{login}</p>
+                    <p>{userData.bio}</p>
                 </InformationsContainer>
             </Link>
         </Container>

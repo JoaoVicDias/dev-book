@@ -25,9 +25,10 @@ export const InformationsContainer = styled.div`
   justify-content: space-around;
   gap: 10px;
 
-  > h3 {
+  > h3, > p {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
+
 `;
